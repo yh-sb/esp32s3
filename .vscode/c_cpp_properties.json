@@ -1,0 +1,10 @@
+{
+    "configurations":
+    [
+        {
+            "name": "esp32s3",
+            "compileCommands": "build/compile_commands.json"
+        }
+    ],
+    "version": 4
+}

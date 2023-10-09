@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations":
+    [
+        {
+            "name": "ESP32-S3",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/esp32s3",
+            "cwd": "${workspaceFolder}/build",
+            "miDebuggerPath": "xtensa-esp32s3-elf-gdb",
+            "externalConsole": true,
+            "internalConsoleOptions": "neverOpen",
+            "preLaunchTask": "gdbserver",
+            "showDisplayString": true,
+            "visualizerFile": "${workspaceFolder}/.vscode/stl.gcc.natvis",
+            "setupCommands":
+            [
+                {
+                    "description": "Connect GDB to GDB server",
+                    "text": "target remote localhost:2331"
+                },
+                {
+                    "description": "Reset target to get to a known state",
+                    "text": "monitor reset"
+                }
+            ]
+        }
+    ]
+}

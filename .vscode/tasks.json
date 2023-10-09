@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks":
+    [
+        {
+            "label": "make",
+            "type": "shell",
+            "command": "make",
+            "presentation": { "showReuseMessage": false, "clear": true },
+            "group": { "kind": "build" },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "gdbserver",
+            "type": "shell",
+            "windows": {"command": "start make debug"},
+            "linux": {"command": "make debug &"},
+            "dependsOn": ["make"],
+            "presentation": { "showReuseMessage": false, "clear": true },
+            "group": { "kind": "build" },
+        }
+    ]
+}
