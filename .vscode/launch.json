@@ -8,22 +8,18 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/esp32s3",
             "cwd": "${workspaceFolder}/build",
-            "miDebuggerPath": "xtensa-esp32s3-elf-gdb",
-            "externalConsole": true,
             "internalConsoleOptions": "neverOpen",
-            "preLaunchTask": "gdbserver",
+            "miDebuggerPath": "xtensa-esp32s3-elf-gdb",
+            //"preLaunchTask": "make and hide terminal",
             "showDisplayString": true,
             "visualizerFile": "${workspaceFolder}/.vscode/stl.gcc.natvis",
-            "setupCommands":
+            "debugServerPath": "openocd",
+            "debugServerArgs": "-f board/esp32s3-ftdi.cfg gdb_port 2331; debug_level 2; reset_config srst_only",
+            "postRemoteConnectCommands":
             [
-                {
-                    "description": "Connect GDB to GDB server",
-                    "text": "target remote localhost:2331"
-                },
-                {
-                    "description": "Reset target to get to a known state",
-                    "text": "monitor reset"
-                }
+                { "text": "target remote localhost:2331" },
+                { "text": "monitor program_esp ${workspace_loc:build/esp32s3.bin} 0x10000 verify" },
+                { "text": "monitor reset halt" }
             ]
         }
     ]

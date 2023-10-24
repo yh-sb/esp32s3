@@ -4,7 +4,6 @@ if(NOT DEFINED ESPTOOL_PARAMS)
 endif()
 
 add_custom_target(flash2
-    COMMENT "Programming ${CMAKE_PROJECT_NAME}.bin"
     COMMAND python ${IDF_PATH}/components/esptool_py/esptool/esptool.py
         ${ESPTOOL_PARAMS} --baud 2000000 --before default_reset --after hard_reset write_flash
         0x0 ${CMAKE_BINARY_DIR}/bootloader/bootloader.bin
@@ -15,7 +14,6 @@ add_custom_target(flash2
 )
 
 add_custom_target(erase
-    COMMENT "Erasing"
     COMMAND python ${IDF_PATH}/components/esptool_py/esptool/esptool.py
         ${ESPTOOL_PARAMS} --before default_reset --after hard_reset erase_flash
     VERBATIM
@@ -23,7 +21,6 @@ add_custom_target(erase
 )
 
 add_custom_target(reset
-    COMMENT "Resetting"
     COMMAND python ${IDF_PATH}/components/esptool_py/esptool/esptool.py ${ESPTOOL_PARAMS} run
     VERBATIM
     USES_TERMINAL

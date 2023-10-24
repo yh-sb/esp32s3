@@ -45,7 +45,6 @@ jobs:
 
       - name: Build
         run: |
-          # Set environment variables for ESP32-S3 GNU Toolchain and Ninja restored from GitHub cache
           $env:Path = "C:\xtensa-esp32s3-elf\bin;C:\ninja;" + $env:Path
           make
 
